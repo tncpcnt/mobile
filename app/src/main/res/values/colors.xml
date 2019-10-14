@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#ddaee4</color>
     <color name="colorAccent">#f1a0af</color>
     <color name="text">#88ddbb</color>
+    <color name="bg">#878787</color>
     <color name="textfill">#9bfbe1</color>
-    <color name="bg">#d0b3e1</color>
     <color name="line">#ffdddd</color>
     <color name="btn">#fdb4bf</color>
 

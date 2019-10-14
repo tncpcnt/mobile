@@ -4,4 +4,5 @@
     <dimen name="normal_size">16sp</dimen>
     <dimen name="small_size">8sp</dimen>
     <dimen name="marginTop">10dp</dimen>
+    <dimen name="pic_size">40dp</dimen>
 </resources>

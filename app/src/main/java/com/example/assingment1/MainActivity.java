@@ -87,16 +87,6 @@ public class MainActivity extends AppCompatActivity {
             isValid = false;
         }
 
-        if (edt4.getText().toString().isEmpty()) {
-            edt4.setError(getString(R.string.error_input) + getString(R.string.txt4));
-            isValid = false;
-        }
-
-        if (edt5.getText().toString().isEmpty()) {
-            edt5.setError(getString(R.string.error_input) + getString(R.string.txt5));
-            isValid = false;
-        }
-
         return isValid;
     }
 
