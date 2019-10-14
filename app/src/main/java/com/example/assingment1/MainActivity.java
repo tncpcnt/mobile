@@ -1,29 +1,34 @@
 package com.example.assingment1;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+
+    private EditText edt1;
+    private EditText edt2;
+    private EditText edt3;
+    private EditText edt4;
+    private EditText edt5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        final EditText edt1 = (EditText) findViewById(R.id.editText1);
-        final EditText edt2 = (EditText) findViewById(R.id.editText2);
-        final EditText edt3 = (EditText) findViewById(R.id.editText3);
-        final EditText edt4 = (EditText) findViewById(R.id.editText4);
-        final EditText edt5 = (EditText) findViewById(R.id.editText5);
-
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
+        setView();
+        if (isNight()) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         ImageView img = (ImageView) findViewById(R.id.imageView);
         img.setImageResource(R.drawable.history);
@@ -32,19 +37,67 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Float deposit = Float.parseFloat(edt1.getText().toString());
-                Float rate = Float.parseFloat(edt2.getText().toString());
-                int month = Integer.parseInt(edt3.getText().toString());
-
-                Float sumrate = rate / 100;
-                Float f = ((deposit*sumrate)/month)*month;
-
-                edt4.setText(String.valueOf(f));
-                edt5.setText(String.valueOf(f+deposit));
-
-
-
+                if (validate()) {
+                    calculate();
+                }
             }
         });
     }
+
+    private void setView() {
+        edt1 = (EditText) findViewById(R.id.editText1);
+        edt2 = (EditText) findViewById(R.id.editText2);
+        edt3 = (EditText) findViewById(R.id.editText3);
+        edt4 = (EditText) findViewById(R.id.editText4);
+        edt5 = (EditText) findViewById(R.id.editText5);
+    }
+
+    private void calculate() {
+        Float deposit = Float.parseFloat(edt1.getText().toString());
+        float rate = Float.parseFloat(edt2.getText().toString());
+        int month = Integer.parseInt(edt3.getText().toString());
+
+        Float sumrate = rate / 100;
+        Float f = ((deposit * sumrate) / month) * month;
+
+        edt4.setText(String.valueOf(f));
+        edt5.setText(String.valueOf(f + deposit));
+    }
+
+    private Boolean isNight() {
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        return hour < 6 || hour > 18;
+    }
+
+    private Boolean validate() {
+        boolean isValid = true;
+        if (edt1.getText().toString().isEmpty()) {
+            edt1.setError(getString(R.string.error_input) + getString(R.string.txt1));
+            isValid = false;
+        }
+
+        if (edt2.getText().toString().isEmpty()) {
+            edt2.setError(getString(R.string.error_input) + getString(R.string.txt2));
+            isValid = false;
+        }
+
+        if (edt3.getText().toString().isEmpty()) {
+            edt3.setError(getString(R.string.error_input) + getString(R.string.txt3));
+            isValid = false;
+        }
+
+        if (edt4.getText().toString().isEmpty()) {
+            edt4.setError(getString(R.string.error_input) + getString(R.string.txt4));
+            isValid = false;
+        }
+
+        if (edt5.getText().toString().isEmpty()) {
+            edt5.setError(getString(R.string.error_input) + getString(R.string.txt5));
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
 }

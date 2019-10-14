@@ -6,4 +6,5 @@
     <string name="txt4">ดอกเบี้ยรับ</string>
     <string name="txt5">เงินรับคืน</string>
     <string name="bnt">คำนวณ</string>
+    <string name="error_input">กรุณากรอก </string>
 </resources>
