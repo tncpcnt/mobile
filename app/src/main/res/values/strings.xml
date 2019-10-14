@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Assingment1</string>
+    <string name="txt1">Deposit.</string>
+    <string name="txt2">Interest rate per year.</string>
+    <string name="txt3">Number of months.</string>
+    <string name="txt4">interest</string>
+    <string name="txt5">Refund</string>
+    <string name="bnt">calculate</string>
+</resources>

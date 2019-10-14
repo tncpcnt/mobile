@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Assingment1</string>
+    <string name="txt1">เงินฝาก</string>
+    <string name="txt2">อัตราดอกเบี้ยต่อปี</string>
+    <string name="txt3">จำนวนเดือน</string>
+    <string name="txt4">ดอกเบี้ยรับ</string>
+    <string name="txt5">เงินรับคืน</string>
+    <string name="bnt">คำนวณ</string>
+</resources>
