@@ -19,6 +19,7 @@ public class DataManager {
         this.sharedPreferences = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     }
 
+    // Ref: https://www.mkyong.com/java/how-do-convert-java-object-to-from-json-format-gson-api/
     public void save(Deposit deposit) {
         SharedPreferences.Editor editor = this.sharedPreferences.edit();
         ArrayList<Deposit> historyArrayList = getHistory();
@@ -28,6 +29,7 @@ public class DataManager {
         editor.apply();
     }
 
+    //Ref : https://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt
     public ArrayList<Deposit> getHistory() {
         String historyString = this.sharedPreferences.getString("history", "");
         return new Gson().fromJson(historyString, new TypeToken<ArrayList<Deposit>>() {
