@@ -15,7 +15,7 @@ public class DataManager {
     private static final String PREFS_NAME = "MyPrefsFile";
     private SharedPreferences sharedPreferences;
 
-    DataManager(Context context) {
+    public DataManager(Context context) {
         this.sharedPreferences = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     }
 
@@ -32,6 +32,9 @@ public class DataManager {
     //Ref : https://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt
     public ArrayList<Deposit> getHistory() {
         String historyString = this.sharedPreferences.getString("history", "");
+        if (historyString == null || historyString.equalsIgnoreCase("")) {
+            return new ArrayList<>();
+        }
         return new Gson().fromJson(historyString, new TypeToken<ArrayList<Deposit>>() {
         }.getType());
     }
