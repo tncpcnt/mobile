@@ -62,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
 
         edt4.setText(String.valueOf(f));
         edt5.setText(String.valueOf(f + deposit));
+
+        Deposit depositData = new Deposit();
+        depositData.setDeposit(deposit);
+        depositData.setRate(rate);
+        depositData.setMonth(month);
+        depositData.setSumRate(sumrate);
+        new DataManager(this).save(depositData);
     }
 
     private Boolean isNight() {
