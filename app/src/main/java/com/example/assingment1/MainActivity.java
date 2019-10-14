@@ -1,5 +1,6 @@
 package com.example.assingment1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+            }
+        });
     }
 
     private void setView() {
@@ -62,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
         edt4.setText(String.valueOf(f));
         edt5.setText(String.valueOf(f + deposit));
+
+        Deposit depositData = new Deposit();
+        depositData.setDeposit(deposit);
+        depositData.setRate(rate);
+        depositData.setMonth(month);
+        depositData.setSumRate(sumrate);
+        new DataManager(this).save(depositData);
     }
 
     private Boolean isNight() {
